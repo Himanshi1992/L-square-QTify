@@ -1,0 +1,24 @@
+.section {
+  padding: 1rem 2rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cardGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.collapseBtn {
+  background: none;
+  border: 1px solid black;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
