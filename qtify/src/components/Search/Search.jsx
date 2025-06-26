@@ -121,7 +121,7 @@ import styles from './Search.module.css';
 
 const Search = ({ placeholder }) => {
   return (
-    <div className={styles.wrapper}>
+    <form className={styles.wrapper}>
       <input
         type="text"
         placeholder={placeholder}
@@ -130,7 +130,7 @@ const Search = ({ placeholder }) => {
       <button className={styles.searchButton} type="submit">
         <SearchIcon />
       </button>
-    </div>
+    </form>
   );
 };
 
