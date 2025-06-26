@@ -3,11 +3,13 @@ import axios from 'axios';
 import styles from './Section.module.css';
 import Card from '../Card/Card';
 
+let globalCollapseState = true;
+
 function Section({ title, endpoint }) {
   const [albums, setAlbums] = useState([]);
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(globalCollapseState);
 
-  useEffect(() => {
+ useEffect(() => {
     axios.get(endpoint)
       .then(res => {
         setAlbums(res.data);
@@ -15,19 +17,25 @@ function Section({ title, endpoint }) {
       .catch(err => console.error("Failed to fetch albums:", err));
   }, [endpoint]);
 
-  // Show only first 10 when collapsed
-  const albumsToRender = isCollapsed ? albums.slice(0, 10) : albums;
+  const toggleCollapse = () => {
+    globalCollapseState = !globalCollapseState;
+    setIsCollapsed(globalCollapseState);
+  };
 
+  
+  const albumsToRender = isCollapsed ? albums.slice(0, 10) : albums;
   return (
     <div className={styles.section}>
       <div className={styles.sectionHeader}>
         <h3>{title}</h3>
-        <button
-          className={styles.collapseBtn}
-          onClick={() => setIsCollapsed(prev => !prev)}
-        >
-          {isCollapsed ? 'Show All' : 'Collapse'}
-        </button>
+        {albums.length > 10 && (
+          <button
+            className={styles.collapseBtn}
+            onClick={toggleCollapse}
+          >
+            {isCollapsed ? 'Show All' : 'Collapse'}
+          </button>
+        )}
       </div>
 
       <div className={styles.cardGrid}>
