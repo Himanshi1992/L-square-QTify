@@ -5,7 +5,7 @@ import heroImage from "../../assets/hero_headphones.png";
 function Hero() {
   return (
     <div className={styles.hero}>
-      <div className={styles.heroText}>
+        <div>
         <h1>100 Thousand Songs, ad-free</h1>
         <p>Over thousands podcast episodes</p>
       </div>
@@ -15,7 +15,8 @@ function Hero() {
         alt="headphones"
         className={styles.heroImage}
       />
-    </div>
+      </div>
+    
   );
 }
 
