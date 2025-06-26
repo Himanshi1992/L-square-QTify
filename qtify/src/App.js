@@ -1,22 +1,11 @@
-import Logo from './components/Logo/Logo';
+// import Logo from './components/Logo/Logo';
 import './App.css';
-import Button from './components/Button/Button';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={Logo} className="App-logo" alt="logo" />
-        <Button text="Give Feedback" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
     </div>
   );
 }
