@@ -1,6 +1,6 @@
 .button {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--black);
+  background-color: var(--color-black);
   color: var(--primary-green);
   padding: 10px 20px;
   border: none;
@@ -8,8 +8,17 @@
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-width: 160px;
+  white-space: nowrap;
 }
 
 .button:hover {
+  background-color: #d3d3d3;
   opacity: 0.9;
+  cursor: pointer;
 }

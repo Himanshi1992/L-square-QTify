@@ -11,10 +11,12 @@
 .navbarLeft {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 20px;
 }
 
 .navbarRight {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+  
 }
