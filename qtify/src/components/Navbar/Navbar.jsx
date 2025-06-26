@@ -14,7 +14,9 @@ function Navbar({ searchData }) {
     </Link>
     <Search placeholder="Search" searchData={searchData} />
   </div>
-      <Button text="Give Feedback" />
+       <div className={styles.navbarRight}>
+    <Button text="Give Feedback" />
+  </div>
     </nav>
   );
 }

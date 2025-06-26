@@ -121,13 +121,16 @@ import styles from './Search.module.css';
 
 const Search = ({ placeholder }) => {
   return (
-    <form >
-      <input className={styles.search} placeholder={placeholder} />
-      <button  type='submit'>
-    
+    <div className={styles.wrapper}>
+      <input
+        type="text"
+        placeholder={placeholder}
+        className={styles.search}
+      />
+      <button className={styles.searchButton} type="submit">
         <SearchIcon />
       </button>
-    </form>
+    </div>
   );
 };
 
