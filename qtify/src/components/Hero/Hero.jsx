@@ -8,7 +8,7 @@ function Hero() {
       <div className={styles.heroContent}>
         <div>
         <h1>100 Thousand Songs, ad-free</h1>
-        <p>Over thousands podcast episodes</p>
+        <h1>Over thousands podcast episodes</h1>
       </div>
       <img
         src={heroImage}
