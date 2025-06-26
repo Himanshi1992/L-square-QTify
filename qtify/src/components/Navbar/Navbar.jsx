@@ -8,13 +8,12 @@ import styles from "./Navbar.module.css";
 function Navbar({ searchData }) {
   return (
     <nav className={styles.navbar}>
-      <Link to="/">
-        <Logo />
-      </Link>
-      <Search
-        placeholder="Search"
-        searchData={searchData}
-      />
+      <div className={styles.navbarLeft}>
+    <Link to="/">
+      <Logo />
+    </Link>
+    <Search placeholder="Search" searchData={searchData} />
+  </div>
       <Button text="Give Feedback" />
     </nav>
   );

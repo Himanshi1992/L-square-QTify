@@ -1,6 +1,13 @@
-import React from "react";
-import LogoImage from "../../assets/logo.png";
+import React from 'react';
+// import styles from "./Logo.module.css";
+import LogoImg from '../../assets/logo.png';
 
-export default function Logo() {
-  return <img src={LogoImage} alt="logo" width={67} />;
-}
+const Logo = () => {
+  return (
+    <div>
+    <img src={LogoImg} width={67} alt="logo"/>
+    </div>
+  );
+};
+
+export default Logo;
