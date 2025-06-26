@@ -11,5 +11,6 @@
 }
 
 .button:hover {
-  background-color: #111111; /* Slightly lighter black for hover (optional) */
+  background-color: #111111; 
+  cursor: pointer;
 }
