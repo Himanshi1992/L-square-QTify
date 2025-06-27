@@ -7,7 +7,11 @@ function Card({ image, follows, title }) {
     <div className={styles.card}>
       <img src={image} alt={title} className={styles.cardImage} />
       <div className={styles.cardFooter}>
-        <Chip label={`${follows} Follows`} className={styles.chip} />
+        <Chip
+          label={`${follows} Follows`}
+          className={styles.chip}
+          classes={{ label: styles.chipLabel }}
+        />
         <div className={styles.cardTitle}>{title}</div>
       </div>
     </div>
