@@ -1,8 +1,10 @@
 .card {
   width: 159px;
+  min-width: 159px;        /* ✅ ensures 7 per row in scroll */
+  flex-shrink: 0;          /* ✅ prevents shrinking in flex layout */
   border-radius: 8px;
   overflow: hidden;
-  background-color: white;
+  background-color: var(--color-black);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -16,20 +18,28 @@
 }
 
 .cardFooter {
-  padding: 6px; /* Matches Figma left: 6px */
+  padding: 6px;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  background-color: var(--color-white);
+}
+
+.titleBar {
+  background-color: var(--color-black);       /* ✅ black background for title */
+  padding: 6px 6px;
+  border-radius: 4px;
 }
 
 .chip {
   height: 23px;
   border-radius: 10px;
   padding: 0px 8px;
-  background-color: #e0e0e0; /* Optional: customize to match Figma */
+  background-color: var(--color-black);
+  color: var(--color-white);
   font-family: 'Poppins', sans-serif;
-  font-size: 10px;
-  font-weight: 400;
+  font-size: 14px;
+ 
   line-height: 100%;
   width: fit-content;
 }
@@ -39,8 +49,8 @@
 }
 
 .cardTitle {
-  font-size: 14px;
-  font-weight: 600;
-  color: #000;
+  font-size: 16px;
+  color: var(--color-white);
   font-family: 'Poppins', sans-serif;
+  justify-content: right;
 }

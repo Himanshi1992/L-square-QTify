@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Hero />
-   <Section
+      <Section
   title="Top Albums"
   endpoint="https://qtify-backend-labs.crio.do/albums/top"
   showCollapse={true}

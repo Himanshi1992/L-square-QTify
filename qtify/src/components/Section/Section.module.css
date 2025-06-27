@@ -1,5 +1,6 @@
 .section {
-  padding: 24px 32px; 
+  padding: 24px 32px;
+  background-color: var(--color-black);
 }
 
 .sectionHeader {
@@ -14,16 +15,63 @@
   font-size: 20px;
   font-weight: 600;
   margin: 0;
+  color: var(--color-white);
 }
 
-.cardGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+.sliderContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Card container in collapsed mode (scrollable row) */
+.cardGridScroll {
+  display: flex;
   gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 8px 0;
+  scrollbar-width: none;
+}
+.cardGridScroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card container in expanded mode (7 cards per row) */
+.cardGridGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 16px;
+  flex: 1;
+  padding: 8px 0;
+}
+
+.scrollBtn {
+  border: none;
+  background:var(--primary-green);
+  cursor: pointer;
+  padding: 4px;
+  margin: 0 8px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.scrollBtn:hover {
+  transform: scale(1.1);
+}
+
+/* Hide scroll buttons in expanded view */
+.hidden {
+  display: none;
 }
 
 .collapseBtn {
-  background: none;
+  background: var(--primary-green);
   border: 1px solid #000;
   padding: 6px 12px;
   border-radius: 8px;
