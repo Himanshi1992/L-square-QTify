@@ -4,7 +4,7 @@ import Chip from '@mui/material/Chip';
 
 function Card({ image, follows, title }) {
   return (
-    <div className={styles.card}>
+    <div className={styles.card} data-testid="album-card">
       <img src={image} alt={title} className={styles.cardImage} />
       <div className={styles.cardFooter}>
         <Chip

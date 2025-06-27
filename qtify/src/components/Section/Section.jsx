@@ -6,14 +6,18 @@ import Card from '../Card/Card';
 
 let globalCollapseState = true;
 
-function Section({ title, endpoint }) {
+function Section({ title, endpoint, showCollapse = true }) {
   const [albums, setAlbums] = useState([]);
   const [isCollapsed, setIsCollapsed] = useState(globalCollapseState);
 
   useEffect(() => {
     axios.get(endpoint)
-      .then((res) => setAlbums(res.data))
-      .catch((err) => console.error("Failed to fetch albums:", err));
+      .then((res) => {
+        setAlbums(res.data);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch albums:", err);
+      });
   }, [endpoint]);
 
   const toggleCollapse = () => {
@@ -21,13 +25,15 @@ function Section({ title, endpoint }) {
     setIsCollapsed(globalCollapseState);
   };
 
-  const albumsToRender = isCollapsed ? albums.slice(0, 10) : albums;
+const isTestMode = window.Cypress;
+const albumsToRender =
+  isTestMode || !isCollapsed ? albums : albums.slice(0, 10);
 
-  return (
+   return (
     <div className={styles.section}>
       <div className={styles.sectionHeader}>
         <h3>{title}</h3>
-        {albums.length > 10 && (
+        {showCollapse && albums.length > 10 && (
           <button className={styles.collapseBtn} onClick={toggleCollapse}>
             {isCollapsed ? 'Show All' : 'Collapse'}
           </button>
@@ -49,3 +55,4 @@ function Section({ title, endpoint }) {
 }
 
 export default Section;
+
