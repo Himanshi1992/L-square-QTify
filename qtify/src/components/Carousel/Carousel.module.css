@@ -1,0 +1,49 @@
+.carouselWrapper {
+  width: 100%;
+  position: relative;
+}
+
+.swiperContainer {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: var(--primary-green);
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
+}
+
+.prevBtn {
+  left: -20px;
+}
+
+.nextBtn {
+  right: -20px;
+}
+
+.slideContent {
+  width: 100%;
+}
+
+.navBtn:hover {
+  opacity: 1;
+}
+
+.navBtn svg {
+  width: 20px;
+  height: 20px;
+  color: white;
+  
+}

@@ -1,18 +1,16 @@
-import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
-import styles from './Section.module.css';
-import Card from '../Card/Card';
-import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
-
-let globalCollapseState = true;
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import styles from "./Section.module.css";
+import Card from "../Card/Card";
+import Carousel from "../Carousel/Carousel";
 
 function Section({ title, endpoint, showCollapse = true }) {
   const [albums, setAlbums] = useState([]);
-  const [isCollapsed, setIsCollapsed] = useState(globalCollapseState);
-  const scrollRef = useRef(null);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   useEffect(() => {
-    axios.get(endpoint)
+    axios
+      .get(endpoint)
       .then((res) => {
         setAlbums(res.data);
         console.log(`${title} API Response:`, res.data);
@@ -23,67 +21,44 @@ function Section({ title, endpoint, showCollapse = true }) {
   }, [endpoint]);
 
   const toggleCollapse = () => {
-    globalCollapseState = !globalCollapseState;
-    setIsCollapsed(globalCollapseState);
+    setIsCollapsed((prev) => !prev);
   };
-
-  const scrollNext = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 400, behavior: 'smooth' });
-    }
-  };
-
-  const scrollPrev = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -400, behavior: 'smooth' });
-    }
-  };
-
-  const albumsToRender = isCollapsed ? albums.slice(0, 10) : albums;
 
   return (
     <div className={styles.section}>
       <div className={styles.sectionHeader}>
         <h3>{title}</h3>
         {showCollapse && (
-  <button className={styles.collapseBtn} onClick={toggleCollapse}>
-    {isCollapsed ? 'Show All' : 'Collapse'}
-  </button>
-)}
+          <button className={styles.collapseBtn} onClick={toggleCollapse}>
+            {isCollapsed ? "Show All" : "Collapse"}
+          </button>
+        )}
       </div>
 
       <div className={styles.sliderContainer}>
-        {/* Slider buttons only visible in collapsed mode */}
-        <button
-          className={`${styles.scrollBtn} ${!isCollapsed ? styles.hidden : ''}`}
-          onClick={scrollPrev}
-        >
-          <ArrowBackIos fontSize="small" />
-        </button>
-
-        {/* Apply different styles for scroll vs grid */}
-        <div
-          className={
-            isCollapsed ? styles.cardGridScroll : styles.cardGridGrid
-          }
-          ref={scrollRef}
-        >
-          {albumsToRender.map((album) => (
-            <Card
-              key={album.id}
-              image={album.image}
-              title={album.title}
-              follows={album.follows}
-            />
-          ))}
-        </div>
-
-        <button
-          className={`${styles.scrollBtn} ${!isCollapsed ? styles.hidden : ''}`}
-          onClick={scrollNext}
-        >
-          <ArrowForwardIos fontSize="small" />
-        </button>
+        {isCollapsed ? (
+          <Carousel>
+            {albums.map((album) => (
+              <Card
+                key={album.id}
+                image={album.image}
+                title={album.title}
+                follows={album.follows}
+              />
+            ))}
+          </Carousel>
+        ) : (
+          <div className={styles.cardGrid}>
+            {albums.map((album) => (
+              <Card
+                key={album.id}
+                image={album.image}
+                title={album.title}
+                follows={album.follows}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

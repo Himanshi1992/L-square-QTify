@@ -22,9 +22,10 @@
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
-/* Card container in collapsed mode (scrollable row) */
+/* For horizontal scroll view (if ever used) */
 .cardGridScroll {
   display: flex;
   gap: 16px;
@@ -37,8 +38,8 @@
   display: none;
 }
 
-/* Card container in expanded mode (7 cards per row) */
-.cardGridGrid {
+/* Expanded grid layout */
+.cardGrid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 16px;
@@ -46,9 +47,10 @@
   padding: 8px 0;
 }
 
+/* Carousel nav buttons (if used outside Carousel.module.css) */
 .scrollBtn {
   border: none;
-  background:var(--primary-green);
+  background: var(--primary-green);
   cursor: pointer;
   padding: 4px;
   margin: 0 8px;
@@ -65,7 +67,7 @@
   transform: scale(1.1);
 }
 
-/* Hide scroll buttons in expanded view */
+/* Hide scroll buttons in grid mode */
 .hidden {
   display: none;
 }
@@ -77,6 +79,7 @@
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
+  color: #000;
   cursor: pointer;
   transition: background 0.2s ease;
 }
